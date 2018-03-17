@@ -1,22 +1,16 @@
 package com.ourideas.android.animalroundup;
 
-import android.support.v7.app.AppCompatActivity;
-
-import android.support.v7.app.AppCompatActivity;
-import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-
-
-import com.ourideas.android.animalroundup.R;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private MediaPlayer animalSound;
+    //final MediaPlayer animalsound = MediaPlayer.create(this, sounds[i]);
+   // private MediaPlayer animalSound;
 
     ImageView imageView;
 
@@ -44,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+     /*  Temporarily commented out to created media player in another spot.
+
         animalSound = MediaPlayer.create(this, R.raw.hyena);
         animalSound.start();
-
+     */
         imageView = (ImageView) findViewById(R.id.imageView);
 
         r = new Random();
@@ -55,6 +51,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                int i=r.nextInt(images.length);
+
+
+                imageView.setImageResource(images[i]);
+
+               /* doesnt work
+                final MediaPlayer animalSound = MediaPlayer.create(this, sounds[i]);
+
+                animalSound.start();
+                */
+
+
+
+
+
+
+
+
+
+               /*  temporarily commented out dur to redundency
                 do {
                     currentImage = r.nextInt(images.length);
 
@@ -63,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                 lastImage = currentImage;
                 imageView.setImageResource(images[currentImage]);
+                */
             }
 
         });
