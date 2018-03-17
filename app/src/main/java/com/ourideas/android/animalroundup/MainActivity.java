@@ -30,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    Integer[] sounds = {
+
+            R.raw.monkey,
+            R.raw.hyena,
+            R.raw.lion
+    };
+
     int currentImage = 0, lastImage = 0;
 
     @Override
