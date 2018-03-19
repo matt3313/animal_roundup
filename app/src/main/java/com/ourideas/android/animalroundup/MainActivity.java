@@ -1,5 +1,6 @@
 package com.ourideas.android.animalroundup;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.donkey,
             R.drawable.hyena,
             R.drawable.lion,
-
     };
 
     Integer[] sounds = {
@@ -31,18 +31,13 @@ public class MainActivity extends AppCompatActivity {
             R.raw.lion
     };
 
-    int currentImage = 0, lastImage = 0;
+    //int currentImage = 0, lastImage = 0;      not used currently
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-     /*  Temporarily commented out to created media player in another spot.
-
-        animalSound = MediaPlayer.create(this, R.raw.hyena);
-        animalSound.start();
-     */
         imageView = (ImageView) findViewById(R.id.imageView);
 
         r = new Random();
@@ -51,26 +46,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int i=r.nextInt(images.length);
+                int i = r.nextInt(images.length);
 
 
                 imageView.setImageResource(images[i]);
 
-               /* doesnt work
-                final MediaPlayer animalSound = MediaPlayer.create(this, sounds[i]);
+
+                final MediaPlayer animalSound = MediaPlayer.create(MainActivity.this, sounds[i]);
 
                 animalSound.start();
-                */
 
-
-
-
-
-
-
-
-
-               /*  temporarily commented out dur to redundency
+                /* does not work with current code
                 do {
                     currentImage = r.nextInt(images.length);
 
