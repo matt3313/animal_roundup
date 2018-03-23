@@ -17,19 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     Random r;
 
-    Integer[] images = {
+    Integer[] images = {R.drawable.cow, R.drawable.hyena, R.drawable.lion, R.drawable.chimp,
+            R.drawable.elephant, R.drawable.fox, R.drawable.hippo, R.drawable.peacock,
+            R.drawable.pig, R.drawable.warthog};
 
-            R.drawable.donkey,
-            R.drawable.hyena,
-            R.drawable.lion,
-    };
-
-    Integer[] sounds = {
-
-            R.raw.monkey,
-            R.raw.hyena,
-            R.raw.lion
-    };
+    Integer[] sounds = {R.raw.cow, R.raw.hyena, R.raw.lion, R.raw.monkey, R.raw.elephant,
+            R.raw.fox, R.raw.hippo, R.raw.peacock, R.raw.pig, R.raw.hog};
 
     //int currentImage = 0, lastImage = 0;      not used currently
 
@@ -45,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 
                 int i = r.nextInt(images.length);
 
