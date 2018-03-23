@@ -11,7 +11,13 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     //final MediaPlayer animalsound = MediaPlayer.create(this, sounds[i]);
-   // private MediaPlayer animalSound;
+    private MediaPlayer animalSound;
+    private MediaPlayer.OnCompletionListener completionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer animalSound) {
+            animalSound.release();
+        }
+    };
 
     ImageView imageView;
 
@@ -43,14 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
                 int i = r.nextInt(images.length);
 
-
                 imageView.setImageResource(images[i]);
 
-
-                final MediaPlayer animalSound = MediaPlayer.create(MainActivity.this, sounds[i]);
-
+                animalSound = MediaPlayer.create(MainActivity.this, sounds[i]);
                 animalSound.start();
-
+                animalSound.setOnCompletionListener(completionListener);
                 /* does not work with current code
                 do {
                     currentImage = r.nextInt(images.length);
