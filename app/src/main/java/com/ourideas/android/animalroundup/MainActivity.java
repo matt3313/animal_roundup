@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    //final MediaPlayer animalsound = MediaPlayer.create(this, sounds[i]);
     private MediaPlayer animalSound;
     private MediaPlayer.OnCompletionListener completionListener = new MediaPlayer.OnCompletionListener() {
         @Override
@@ -30,42 +29,41 @@ public class MainActivity extends AppCompatActivity {
     Integer[] sounds = {R.raw.cow, R.raw.hyena, R.raw.lion, R.raw.monkey, R.raw.elephant,
             R.raw.fox, R.raw.hippo, R.raw.peacock, R.raw.pig, R.raw.hog};
 
-    //int currentImage = 0, lastImage = 0;      not used currently
+    int i = 0, lastImage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        animalSound = MediaPlayer.create(this, R.raw.elephant);
+        animalSound.start();
+        animalSound.setOnCompletionListener(completionListener);
+
         imageView = findViewById(R.id.imageView);
 
         r = new Random();
+
+
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                animalSound.release();
 
+                do {
+                    i = r.nextInt(images.length);
 
-                int i = r.nextInt(images.length);
+                } while (i == lastImage);
 
+                lastImage = i;
                 imageView.setImageResource(images[i]);
 
                 animalSound = MediaPlayer.create(MainActivity.this, sounds[i]);
                 animalSound.start();
                 animalSound.setOnCompletionListener(completionListener);
-                /* does not work with current code
-                do {
-                    currentImage = r.nextInt(images.length);
-
-
-                } while (currentImage == lastImage);
-
-                lastImage = currentImage;
-                imageView.setImageResource(images[currentImage]);
-                */
             }
-
         });
     }
 }
